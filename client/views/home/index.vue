@@ -3,7 +3,7 @@
     <lee-header></lee-header>
     <LeeSideBar></LeeSideBar>
     <lee-main></lee-main>
-    <lee-footer></lee-footer>
+    <!-- <lee-footer></lee-footer> -->
   </div>
 </template>
 

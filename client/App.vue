@@ -10,5 +10,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="stylus">
+html,body
+  margin 0
 </style>

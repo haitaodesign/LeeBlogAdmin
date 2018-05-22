@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="lee-header">
     头部
   </div>
 </template>
@@ -10,6 +10,9 @@
   }
 </script>
 
-<style scoped>
-
+<style lang="stylus" scoped>
+.lee-header
+  position absolute
+  width 100%
+  height 64px
 </style>

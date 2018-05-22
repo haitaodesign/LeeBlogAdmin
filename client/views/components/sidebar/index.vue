@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="lee-sidebar">
     菜单
   </div>
 </template>
@@ -10,6 +10,12 @@
   }
 </script>
 
-<style scoped>
-
+<style lang="stylus" scoped>
+.lee-sidebar
+  position absolute
+  top 64px
+  left 0
+  width 200px
+  height 100%
 </style>
+
