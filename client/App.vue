@@ -1,27 +1,14 @@
 <template>
   <div>
-    <div id="test">{{test}}</div>
-    <Test></Test>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import Test from './todo/test.jsx'
 export default {
-  name: 'App',
-  data () {
-    return {
-      test: 'abc'
-    }
-  },
-  components: {
-    Test
-  }
+  name: 'App'
 }
 </script>
 
 <style scoped>
-  #test {
-    color: blue;
-  }
 </style>
