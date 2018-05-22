@@ -61,6 +61,7 @@
     "webpack-merge": "^4.1.2"
   },
   "dependencies": {
+    "iview": "^2.14.0-rc.3",
     "vue": "^2.5.16",
     "vue-router": "^3.0.1"
   }
