@@ -9,6 +9,12 @@ module.exports = {
     filename: 'bundle.[hash:8].js',
     path: path.join(__dirname, '../dist')
   },
+  resolve: {
+    extensions: ['.js', '.vue', '.json'],
+    alias: {
+      '@views': path.resolve(__dirname, '..', 'client/views/components')
+    }
+  },
   module: {
     rules: [{
       test: /\.(vue|js|jsx)/,

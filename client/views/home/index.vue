@@ -8,10 +8,10 @@
 </template>
 
 <script>
-import LeeHeader from '../components/header/index'
-import LeeSideBar from '../components/sidebar/index'
-import LeeMain from '../components/main/index'
-import LeeFooter from '../components/footer/index'
+import LeeHeader from '@views/header/index'
+import LeeSideBar from '@views/sidebar/index'
+import LeeMain from '@views/main/index'
+import LeeFooter from '@views/footer/index'
 export default {
   name: 'home',
   components: {
