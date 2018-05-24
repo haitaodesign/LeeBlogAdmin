@@ -30,5 +30,6 @@ export default {
   right 0
   height 40px
   line-height 40px
-  margin-left 10px
+  padding-left 10px
+  border-bottom 1px solid #eee
 </style>
