@@ -13,7 +13,7 @@
 <style lang="stylus" scoped>
 .lee-main
   position absolute
-  top 60px
+  top 100px
   left 240px
   bottom 0
   right 0
