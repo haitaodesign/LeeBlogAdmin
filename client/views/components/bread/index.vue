@@ -27,7 +27,7 @@ export default {
   position absolute
   top 60px
   left 240px
-  width 100%
+  right 0
   height 40px
   line-height 40px
   margin-left 10px
