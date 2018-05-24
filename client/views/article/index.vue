@@ -1,15 +1,16 @@
 <template>
   <div>
-
+    文章管理
   </div>
 </template>
 
 <script>
   export default {
-    name: 'article'
+    name: 'leearticle'
   }
 </script>
 
-<style scoped>
+<style lang="stylus" scoped>
 
 </style>
+

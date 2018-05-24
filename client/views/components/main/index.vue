@@ -1,6 +1,6 @@
 <template>
   <div class="lee-main">
-    主体
+    <router-view></router-view>
   </div>
 </template>
 
