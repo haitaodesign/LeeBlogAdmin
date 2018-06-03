@@ -13,7 +13,8 @@ module.exports = {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       '@views': path.resolve(__dirname, '..', 'client/views/components'),
-      '@': path.resolve(__dirname, '..', 'client/views')
+      '@': path.resolve(__dirname, '..', 'client/views'),
+      '@com': path.resolve(__dirname, '..', 'client/components')
     }
   },
   module: {

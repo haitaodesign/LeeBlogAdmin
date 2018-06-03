@@ -3,10 +3,9 @@ import VueRouter from 'vue-router'
 import App from './App.vue'
 import iView from 'iview'
 import 'iview/dist/styles/iview.css'
+import './styles/variable.styl'
 import createRouter from './router/index'
 
-import './assets/images/bg.jpeg'
-import './assets/styles/test.styl'
 Vue.use(VueRouter)
 Vue.use(iView)
 const router = createRouter()
