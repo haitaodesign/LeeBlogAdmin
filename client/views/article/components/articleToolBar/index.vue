@@ -1,6 +1,10 @@
 <template>
   <div class="articleToolBar">
-    <Button type="primary" shape="circle" long>新建文章</Button>
+    <Row>
+      <Col span="4">
+        <Button type="primary" shape="circle" long>新建文章</Button>
+      </Col>
+    </Row>
   </div>
 </template>
 
