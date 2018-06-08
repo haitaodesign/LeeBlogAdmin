@@ -3,15 +3,15 @@
     <div class="lee-login-box">
       <h1 class="lee-login-title">LeeAdmin</h1>
       <div class="lee-login-form">
-        <Form>
-          <FormItem prop="userName">
-            <Input v-model="params.userName" placeholder="请输入用户名"></Input>
+        <Form ref="params" :model="params" :rules="loginRules" >
+          <FormItem prop="username">
+            <Input v-model="params.username" placeholder="请输入用户名"></Input>
         </FormItem>
-        <FormItem prop="passWord">
-            <Input v-model="params.passWord" placeholder="请输入密码"></Input>
+        <FormItem prop="password">
+            <Input v-model="params.password" type="password" placeholder="请输入密码"></Input>
         </FormItem>
         <FormItem>
-            <Button type="primary" long @click="handleSubmit('params')">登录</Button>
+          <Button type="primary" long @click="handleSubmit('params')">登录</Button>
         </FormItem>
         </Form>
       </div>
@@ -20,18 +20,37 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
   name: 'login',
   data  () {
     return {
       params: {
-        userName: '',
-        passWord: ''
+        username: 'admin0',
+        password: '123456'
+      },
+      loginRules: {
+        username: [
+          { required: true, message: '用户名不能为空！', trigger: 'change' }
+        ],
+        password: [
+          { required: true, message: '密码不能为空！', trigger: 'change' }
+        ]
       }
     }
   },
   methods: {
-    handleSubmit () {
+    ...mapActions('Login', ['login']),
+    handleSubmit (name) {
+      this.$refs[name].validate((valid) => {
+        if (valid) {
+          const res = this.login(this.params)
+          console.log(res)
+          this.$Message.success('Success!')
+        } else {
+          this.$Message.error('Fail!')
+        }
+      })
     }
   }
 }

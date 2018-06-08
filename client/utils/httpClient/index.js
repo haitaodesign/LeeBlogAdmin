@@ -1,18 +1,15 @@
-import Axios from 'axios'
+import service from './interceptors'
 import QS from 'qs'
-
 class BaseAxios {
   constructor () {
-    this.$http = Axios.create({
-      baseURL: 'http://localhost:3000'
-    })
+    this.$http = service
     this.OptionsDefault = {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
       },
-      transformRequest: [function (data) {
+      transformRequest: function (data) {
         return QS.stringify(data)
-      }]
+      }
     }
   }
   get (url, config = {}) {
