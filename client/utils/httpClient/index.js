@@ -4,7 +4,7 @@ import QS from 'qs'
 class BaseAxios {
   constructor () {
     this.$http = Axios.create({
-      baseURL: 'localhost'
+      baseURL: 'http://localhost:3000'
     })
     this.OptionsDefault = {
       headers: {
