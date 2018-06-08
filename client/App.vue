@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="root">
     <router-view></router-view>
   </div>
 </template>
@@ -11,6 +11,5 @@ export default {
 </script>
 
 <style lang="stylus">
-html,body
-  margin 0
+
 </style>
