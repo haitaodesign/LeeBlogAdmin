@@ -21,6 +21,8 @@
 
 <script>
 import { mapActions } from 'vuex'
+import UserManager from '@api/UserManager'
+const user = new UserManager()
 export default {
   name: 'login',
   data  () {
@@ -34,7 +36,8 @@ export default {
           { required: true, message: '用户名不能为空！', trigger: 'change' }
         ],
         password: [
-          { required: true, message: '密码不能为空！', trigger: 'change' }
+          { required: true, message: '密码不能为空！', trigger: 'change' },
+          { type: 'string', min: 6, message: '密码长度不能小于6位！', trigger: 'change' }
         ]
       }
     }
@@ -44,13 +47,22 @@ export default {
     handleSubmit (name) {
       this.$refs[name].validate((valid) => {
         if (valid) {
-          const res = this.login(this.params)
-          console.log(res)
-          this.$Message.success('Success!')
+          this.getLogin()
         } else {
-          this.$Message.error('Fail!')
+          this.$Message.error('请输入完整的登录信息!')
         }
       })
+    },
+    async getLogin () {
+      const { data: {code, data: { token }, msg} } = await user.login(this.params)
+      if (code === 0) {
+        this.$Message.success(msg)
+        window.localStorage.setItem('username', this.params.username)
+        window.localStorage.setItem('token', token)
+        this.$router.push({ path: '/article' })
+      } else {
+        this.$Message.error(msg)
+      }
     }
   }
 }
