@@ -64,6 +64,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
     "iview": "^2.14.0-rc.3",
     "qs": "^6.5.2",
     "vue": "^2.5.16",

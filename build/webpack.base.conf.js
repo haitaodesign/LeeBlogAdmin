@@ -28,6 +28,10 @@ module.exports = {
       test: /\.vue$/,
       loader: 'vue-loader'
     }, {
+      test: /\.js$/,
+      include: [path.join(__dirname, '..', 'client')]
+    },
+    {
       test: /\.jsx$/,
       loader: 'babel-loader'
     }, {
