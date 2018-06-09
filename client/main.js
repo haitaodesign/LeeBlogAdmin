@@ -14,19 +14,19 @@ Vue.use(iView)
 const router = CreateRouter()
 const store = CreateStore()
 
-router.beforeEach((to, from, next) => {
-  const token = window.localStorage.getItem('token')
-  if (!token) {
-    const path = to.path
-    if (path !== '/login') {
-      next('/login')
-    } else {
-      next()
-    }
-  } else {
-    next()
-  }
-})
+// router.beforeEach((to, from, next) => {
+//   const token = window.localStorage.getItem('token')
+//   if (!token) {
+//     const path = to.path
+//     if (path !== '/login') {
+//       next('/login')
+//     } else {
+//       next()
+//     }
+//   } else {
+//     next()
+//   }
+// })
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
