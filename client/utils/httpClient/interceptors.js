@@ -6,6 +6,10 @@ const service = Axios.create({
 
 service.interceptors.request.use(
   config => {
+    const token = window.localStorage.getItem('token')
+    if (token) {
+      config.headers.common['Authorization'] = 'Bearer ' + token
+    }
     return config
   },
   error => {
