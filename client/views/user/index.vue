@@ -1,7 +1,7 @@
 <template>
   <div class="index">
     <div class="index-top">
-      <search-form></search-form>
+      <search-form @on-add="_handleOnAddClick"></search-form>
     </div>
     <div class="index-table">
       <lee-table :data="data" :columns="columns" @on-select="_handleOnSelect"></lee-table>
@@ -52,6 +52,8 @@ export default {
     },
     _handleOnSelect (selection, row) {
       console.log(selection, row)
+    },
+    _handleOnAddClick () {
     }
   },
   components: {

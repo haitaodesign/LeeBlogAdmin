@@ -11,16 +11,26 @@
 <script>
 import LeeTable from '@com/LeeTable/index.vue'
 import ArticleToolBar from './components/articleToolBar'
-// import ArticleManager from '../../api/ArticleManager'
+import ArticleManager from '../../api/ArticleManager'
+const newar = new ArticleManager()
 export default {
   name: 'leearticle',
   components: {
     LeeTable,
     ArticleToolBar
   },
+  data () {
+    return {
+    }
+  },
   mounted () {
-    // let newar = new ArticleManager()
-    // console.log(newar.getArticleList())
+    this._initLeeTable()
+  },
+  methods: {
+    async _initLeeTable () {
+      const data = await newar.getArticleList()
+      console.log(data)
+    }
   }
 }
 </script>
