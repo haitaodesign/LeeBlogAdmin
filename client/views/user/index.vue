@@ -6,12 +6,14 @@
     <div class="index-table">
       <lee-table :data="data" :columns="columns" @on-select="_handleOnSelect"></lee-table>
     </div>
+    <lee-modal :show="isModalShow" :title="title" @on-ok="_handleOnOkClick" @on-cancel="_handleOnCancelClick"></lee-modal>
   </div>
 </template>
 
 <script>
 import LeeTable from '@com/LeeTable/index.vue'
 import SearchForm from './components/searchForm'
+import LeeModal from './components/modal'
 import UserManager from '@api/UserManager'
 const user = new UserManager()
 export default {
@@ -36,7 +38,9 @@ export default {
       }, {
         title: '头像',
         key: 'avatar'
-      }]
+      }],
+      isModalShow: false,
+      title: ''
     }
   },
   mounted () {
@@ -54,11 +58,20 @@ export default {
       console.log(selection, row)
     },
     _handleOnAddClick () {
+      this.title = '添加用户'
+      this.isModalShow = true
+    },
+    _handleOnOkClick () {
+      this.isModalShow = false
+    },
+    _handleOnCancelClick () {
+      this.isModalShow = false
     }
   },
   components: {
     LeeTable,
-    SearchForm
+    SearchForm,
+    LeeModal
   }
 }
 </script>
