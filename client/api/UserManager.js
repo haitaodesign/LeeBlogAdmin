@@ -6,6 +6,9 @@ class UserManager extends BaseAxios {
   getUserList (data) {
     return this.post('users', data)
   }
+  add (data) {
+    return this.post('user/add', data)
+  }
 }
 
 export default UserManager

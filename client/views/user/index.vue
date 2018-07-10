@@ -42,12 +42,8 @@ export default {
       isModalShow: false,
       title: '',
       form: {
-        id: '1',
-        username: '33',
-        password: '333',
-        email: '33',
-        avatar: '333'
-      }
+      },
+      status: 'add' // or edit
     }
   },
   mounted () {
@@ -55,9 +51,8 @@ export default {
   },
   methods: {
     async _getUserList () {
-      const { data: { code, data, msg } } = await user.getUserList(this.params)
+      const { data: { code, data } } = await user.getUserList(this.params)
       if (code === 0) {
-        this.$Message.success(msg)
         this.data = data
       }
     },
@@ -66,14 +61,35 @@ export default {
     },
     _handleOnAddClick () {
       this.title = '添加用户'
+      this.status = 'add'
       this.isModalShow = true
     },
-    _handleOnOkClick () {
-      this.isModalShow = false
+    _handleOnOkClick (params) {
+      const { status } = this
+      if (status === 'add') {
+        this._Add(params)
+      } else if (status === 'edit') {
+
+      }
     },
     _handleOnCancelClick () {
       this.isModalShow = false
+    },
+    async _Add (params) {
+      try {
+        const { data: { code, msg } } = await user.add(params)
+        if (code === 0) {
+          this.$Message.success(msg)
+          this.isModalShow = false
+          this._getUserList()
+        } else {
+          this.$Message.error(msg)
+        }
+      } catch (error) {
+        this.$Message.error(error)
+      }
     }
+
   },
   components: {
     LeeTable,

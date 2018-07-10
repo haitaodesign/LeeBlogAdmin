@@ -80,7 +80,7 @@
         // 先校验参数，然后返回
         this.$refs[name].validate((valid) => {
           if (valid) {
-            this.$emit('on-ok', this.params)
+            this.$emit('on-ok', this.form)
           } else {
             this.$Message.error('请输入符合要求的数据！')
           }
