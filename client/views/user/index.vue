@@ -6,7 +6,7 @@
     <div class="index-table">
       <lee-table :data="data" :columns="columns" @on-select="_handleOnSelect"></lee-table>
     </div>
-    <lee-modal :show="isModalShow" :title="title" @on-ok="_handleOnOkClick" @on-cancel="_handleOnCancelClick"></lee-modal>
+    <lee-modal :show="isModalShow" :title="title" :edit="form" @on-ok="_handleOnOkClick" @on-cancel="_handleOnCancelClick"></lee-modal>
   </div>
 </template>
 
@@ -40,7 +40,14 @@ export default {
         key: 'avatar'
       }],
       isModalShow: false,
-      title: ''
+      title: '',
+      form: {
+        id: '1',
+        username: '33',
+        password: '333',
+        email: '33',
+        avatar: '333'
+      }
     }
   },
   mounted () {

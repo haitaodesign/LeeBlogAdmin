@@ -8,7 +8,8 @@
         <!-- 表单模板 -->
         <Form ref="form" :model="form" :rules="rulesForm" :label-width="80" label-position="left" >
           <FormItem label="用户名" prop="username">
-            <Input type="text" v-model="form.username"></Input>
+            <!-- 表单数据编辑如何映射？ -->
+            <Input type="text" v-model="form['username']"></Input>
           </FormItem>
           <FormItem label="密码" prop="password">
             <Input type="text" v-model="form.password"></Input>
@@ -39,6 +40,12 @@
       title: {
         type: String,
         default: 'Modal'
+      },
+      edit: {
+        type: Object,
+        default () {
+          return {}
+        }
       }
     },
     data () {
@@ -65,6 +72,9 @@
         this.modal = value
       }
     },
+    mounted () {
+      this._initEditForm()
+    },
     methods: {
       _handleOkClick (name) {
         // 先校验参数，然后返回
@@ -87,6 +97,15 @@
       },
       _resetForm (name) {
         this.$refs[name].resetFields()
+      },
+      _initEditForm () {
+        const { edit, form } = this
+        if (edit !== {}) {
+          const formKeys = Object.keys(form)
+          formKeys.forEach((item) => {
+            form[item] = edit[item]
+          })
+        }
       }
     }
   }
