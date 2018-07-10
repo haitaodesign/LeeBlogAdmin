@@ -1,7 +1,7 @@
 <template>
   <div class="index">
     <div class="index-top">
-      <search-form @on-add="_handleOnAddClick"></search-form>
+      <search-form @on-add="_handleOnAddClick" @on-update="_handleOnUpdateClick"></search-form>
     </div>
     <div class="index-table">
       <lee-table :data="data" :columns="columns" @on-select="_handleOnSelect"></lee-table>
@@ -43,6 +43,8 @@ export default {
       title: '',
       form: {
       },
+      selection: [],
+      curRow: {},
       status: 'add' // or edit
     }
   },
@@ -57,11 +59,13 @@ export default {
       }
     },
     _handleOnSelect (selection, row) {
-      console.log(selection, row)
+      this.curRow = row
+      this.selection = selection
     },
     _handleOnAddClick () {
       this.title = '添加用户'
       this.status = 'add'
+      this.form = {}
       this.isModalShow = true
     },
     _handleOnOkClick (params) {
@@ -69,7 +73,20 @@ export default {
       if (status === 'add') {
         this._Add(params)
       } else if (status === 'edit') {
-
+        // 判断是否选中其中一项
+        this._Update(params)
+      }
+    },
+    _handleOnUpdateClick () {
+      const len = this.selection.length
+      const { curRow } = this
+      if (len === 1) {
+        this.title = '修改用户'
+        this.status = 'edit'
+        this.isModalShow = true
+        this.form = curRow
+      } else {
+        this.$Message.error('修改数据必须且只能选中一条！')
       }
     },
     _handleOnCancelClick () {
@@ -78,6 +95,20 @@ export default {
     async _Add (params) {
       try {
         const { data: { code, msg } } = await user.add(params)
+        if (code === 0) {
+          this.$Message.success(msg)
+          this.isModalShow = false
+          this._getUserList()
+        } else {
+          this.$Message.error(msg)
+        }
+      } catch (error) {
+        this.$Message.error(error)
+      }
+    },
+    async _Update (params) {
+      try {
+        const { data: { code, msg } } = await user.update(params)
         if (code === 0) {
           this.$Message.success(msg)
           this.isModalShow = false

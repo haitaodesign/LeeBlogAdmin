@@ -70,17 +70,27 @@
     watch: {
       show (value) {
         this.modal = value
+        if (this.edit) {
+          this._initEditForm()
+        }
       }
-    },
-    mounted () {
-      this._initEditForm()
     },
     methods: {
       _handleOkClick (name) {
         // 先校验参数，然后返回
         this.$refs[name].validate((valid) => {
           if (valid) {
-            this.$emit('on-ok', this.form)
+            const { edit } = this
+            let params
+            if (edit) {
+              params = {
+                _id: this.edit._id,
+                ...this.form
+              }
+            } else {
+              params = this.form
+            }
+            this.$emit('on-ok', params)
           } else {
             this.$Message.error('请输入符合要求的数据！')
           }
