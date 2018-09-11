@@ -1,7 +1,7 @@
 <template>
   <div class="index">
     <div class="index-top">
-      <search-form @on-add="_handleOnAddClick" @on-update="_handleOnUpdateClick"></search-form>
+      <search-form @on-add="_handleOnAddClick" @on-update="_handleOnUpdateClick" @on-delete="_handleOnDeleteClick"></search-form>
     </div>
     <div class="index-table">
       <lee-table :data="data" :columns="columns" @on-select="_handleOnSelect"></lee-table>
@@ -87,6 +87,13 @@ export default {
         this.form = curRow
       } else {
         this.$Message.error('修改数据必须且只能选中一条！')
+      }
+    },
+    _handleOnDeleteClick () {
+      const len = this.selection.length
+      if (len === 1) {
+      } else {
+        this.$Message.error('删除数据至少选择一条！')
       }
     },
     _handleOnCancelClick () {
