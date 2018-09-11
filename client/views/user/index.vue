@@ -113,6 +113,7 @@ export default {
           this.$Message.success(msg)
           this.isModalShow = false
           this._getUserList()
+          this.selection = []
         } else {
           this.$Message.error(msg)
         }
