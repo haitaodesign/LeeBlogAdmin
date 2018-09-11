@@ -430,8 +430,8 @@ async-each@^1.0.0:
   resolved "http://registry.npm.taobao.org/async-each/download/async-each-1.0.1.tgz#19d386a1d9edc6e7c1c85d388aedbcc56d33602d"
 
 async-validator@^1.8.2:
-  version "1.8.2"
-  resolved "http://registry.npm.taobao.org/async-validator/download/async-validator-1.8.2.tgz#b77597226e96242f8d531c0d46ae295f62422ba4"
+  version "1.8.5"
+  resolved "http://registry.npm.taobao.org/async-validator/download/async-validator-1.8.5.tgz#dc3e08ec1fd0dddb67e60842f02c0cd1cec6d7f0"
   dependencies:
     babel-runtime "6.x"
 
@@ -2057,8 +2057,8 @@ deep-is@~0.1.3:
   resolved "http://registry.npm.taobao.org/deep-is/download/deep-is-0.1.3.tgz#b369d6fb5dbc13eecf524f91b070feedc357cf34"
 
 deepmerge@^2.1.0:
-  version "2.1.0"
-  resolved "http://registry.npm.taobao.org/deepmerge/download/deepmerge-2.1.0.tgz#511a54fff405fc346f0240bb270a3e9533a31102"
+  version "2.1.1"
+  resolved "http://registry.npm.taobao.org/deepmerge/download/deepmerge-2.1.1.tgz#e862b4e45ea0555072bf51e7fd0d9845170ae768"
 
 define-properties@^1.1.2:
   version "1.1.2"
@@ -3862,9 +3862,9 @@ isurl@^1.0.0-alpha5:
     has-to-string-tag-x "^1.2.0"
     is-object "^1.0.1"
 
-iview@^2.14.0-rc.3:
-  version "2.14.0-rc.3"
-  resolved "http://registry.npm.taobao.org/iview/download/iview-2.14.0-rc.3.tgz#ffe019a442275868ff89d20c38a8b2467ebbc481"
+iview@^3.1.0:
+  version "3.1.0"
+  resolved "http://registry.npm.taobao.org/iview/download/iview-3.1.0.tgz#b11e62136a1f215f4957961d79104df657a314a0"
   dependencies:
     async-validator "^1.8.2"
     deepmerge "^2.1.0"
@@ -3873,7 +3873,7 @@ iview@^2.14.0-rc.3:
     lodash.throttle "^4.1.1"
     popper.js "^1.14.1"
     tinycolor2 "^1.4.1"
-    v-click-outside-x "^2.4.0"
+    v-click-outside-x "^3.0.0"
 
 js-base64@^2.1.9:
   version "2.4.5"
@@ -5078,8 +5078,8 @@ pluralize@^7.0.0:
   resolved "http://registry.npm.taobao.org/pluralize/download/pluralize-7.0.0.tgz#298b89df8b93b0221dbf421ad2b1b1ea23fc6777"
 
 popper.js@^1.14.1:
-  version "1.14.3"
-  resolved "http://registry.npm.taobao.org/popper.js/download/popper.js-1.14.3.tgz#1438f98d046acf7b4d78cd502bf418ac64d4f095"
+  version "1.14.4"
+  resolved "http://registry.npm.taobao.org/popper.js/download/popper.js-1.14.4.tgz#8eec1d8ff02a5a3a152dd43414a15c7b79fd69b6"
 
 portfinder@^1.0.9:
   version "1.0.13"
@@ -6760,9 +6760,9 @@ uuid@^3.0.1, uuid@^3.1.0:
   version "3.2.1"
   resolved "http://registry.npm.taobao.org/uuid/download/uuid-3.2.1.tgz#12c528bb9d58d0b9265d9a2f6f0fe8be17ff1f14"
 
-v-click-outside-x@^2.4.0:
-  version "2.4.0"
-  resolved "http://registry.npm.taobao.org/v-click-outside-x/download/v-click-outside-x-2.4.0.tgz#6b92c81dc62d99b07c80214f9b23528064221cbf"
+v-click-outside-x@^3.0.0:
+  version "3.2.2"
+  resolved "http://registry.npm.taobao.org/v-click-outside-x/download/v-click-outside-x-3.2.2.tgz#7e02cd18836890ffe73981f3aa6e96a0d84286f0"
 
 v8-compile-cache@^1.1.2:
   version "1.1.2"

@@ -23,7 +23,7 @@
         </Form>
         <div slot="footer">
             <Button type="primary" @click="_handleOkClick('form')">提交</Button>
-            <Button type="ghost" @click="_handleResetClick('form')" style="margin-left: 8px">重置</Button>
+            <Button @click="_handleResetClick('form')" style="margin-left: 8px">重置</Button>
           </div>
     </Modal>
   </div>
