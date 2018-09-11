@@ -11,9 +11,9 @@
             <!-- 表单数据编辑如何映射？ -->
             <Input type="text" v-model="form['username']"></Input>
           </FormItem>
-          <FormItem label="密码" prop="password">
+          <!-- <FormItem label="密码" prop="password">
             <Input type="text" v-model="form.password"></Input>
-          </FormItem>
+          </FormItem> -->
           <FormItem label="邮箱" prop="email">
             <Input type="email" v-model="form.email"></Input>
           </FormItem>
@@ -59,7 +59,7 @@
         },
         rulesForm: {
           username: [{required: true, message: '用户名不能为空', trigger: 'change'}],
-          password: [{required: true, message: '密码不能为空', trigger: 'change'}],
+          // password: [{required: true, message: '密码不能为空', trigger: 'change'}],
           email: [
             {required: true, message: '邮箱不能为空', trigger: 'change'},
             {type: 'email', message: '请输入正确的邮箱格式', trigger: 'change'}
