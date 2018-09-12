@@ -2,7 +2,7 @@
   <div class="articleToolBar">
     <Row>
       <Col span="4">
-        <Button type="primary" shape="circle" long>新建文章</Button>
+        <Button type="primary" shape="circle" long @click="addArticle">新建文章</Button>
       </Col>
     </Row>
   </div>
@@ -10,7 +10,12 @@
 
 <script>
   export default {
-    name: 'articleToolBar'
+    name: 'articleToolBar',
+    methods: {
+      addArticle () {
+        this.$emit('on-addArticle')
+      }
+    }
   }
 </script>
 

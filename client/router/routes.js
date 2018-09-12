@@ -2,13 +2,9 @@
 import Article from '@/article'
 export default [{
   path: '/',
-  redirect: '/home'
-},
-{
-  path: '/home',
   name: '首页',
   meta: {
-    title: 'this is app'
+    title: '首页'
   },
   component: () => import('@/home'),
   children: [{
@@ -18,6 +14,13 @@ export default [{
       title: 'leeadmin-文章管理'
     },
     component: Article
+  }, {
+    path: 'article/addArticle',
+    name: '新建文章',
+    meta: {
+      title: 'leeadmin-新建文章'
+    },
+    component: () => import('@/article/addArticle')
   }, {
     path: '/category',
     name: '分类管理',

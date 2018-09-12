@@ -1,7 +1,7 @@
 <template>
   <div class="lee-article">
     <div class="lee-article-search">
-      <article-tool-bar></article-tool-bar>
+      <article-tool-bar @on-addArticle="handleOnAddArticle"></article-tool-bar>
     </div>
     <div class="lee-article-table">
       <lee-table></lee-table>
@@ -30,6 +30,9 @@ export default {
     async _initLeeTable () {
       const data = await newar.getArticleList()
       console.log(data)
+    },
+    handleOnAddArticle () {
+      this.$router.push({ name: '新建文章' })
     }
   }
 }
