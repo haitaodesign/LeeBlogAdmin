@@ -12,6 +12,9 @@ class UserManager extends BaseAxios {
   update (data) {
     return this.post('user/update', data)
   }
+  _delete (data) {
+    return this.delete('user/delete' + '/' + data._id)
+  }
 }
 
 export default UserManager

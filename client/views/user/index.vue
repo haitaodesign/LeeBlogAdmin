@@ -92,8 +92,10 @@ export default {
     _handleOnDeleteClick () {
       const len = this.selection.length
       if (len === 1) {
+        const { _id } = this.selection[0]
+        this._Delete({ _id })
       } else {
-        this.$Message.error('删除数据至少选择一条！')
+        this.$Message.error('目前只支持删除一条数据！')
       }
     },
     _handleOnCancelClick () {
@@ -127,8 +129,21 @@ export default {
       } catch (error) {
         this.$Message.error(error)
       }
+    },
+    async _Delete (params) {
+      const { data: { code, msg } } = await user._delete(params)
+      try {
+        if (code === 0) {
+          this.$Message.success(msg)
+          this._getUserList()
+          this.selection = []
+        } else {
+          this.$Message.error(msg)
+        }
+      } catch (error) {
+        this.$Message.error(error)
+      }
     }
-
   },
   components: {
     LeeTable,
