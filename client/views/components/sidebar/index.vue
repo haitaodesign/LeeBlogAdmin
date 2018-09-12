@@ -1,28 +1,24 @@
 <template>
   <div class="lee-sidebar">
-    <Menu active-name="1">
+    <Menu active-name="文章管理" @on-select="_handleOnSelect">
         <MenuGroup title="内容管理">
-            <MenuItem name="1">
+            <MenuItem name="文章管理">
                 <Icon type="document-text"></Icon>
                 文章管理
             </MenuItem>
-            <MenuItem name="2">
+            <MenuItem name="分类管理">
                 <Icon type="chatbubbles"></Icon>
                 分类管理
             </MenuItem>
-            <MenuItem name="3">
+            <MenuItem name="标签管理">
                 <Icon type="chatbubbles"></Icon>
                 标签管理
             </MenuItem>
         </MenuGroup>
         <MenuGroup title="系统管理">
-            <MenuItem name="4">
+            <MenuItem name="用户管理">
                 <Icon type="heart"></Icon>
                 用户管理
-            </MenuItem>
-            <MenuItem name="5">
-                <Icon type="heart-broken"></Icon>
-                个人信息
             </MenuItem>
         </MenuGroup>
     </Menu>
@@ -31,7 +27,12 @@
 
 <script>
   export default {
-    name: 'sidebar'
+    name: 'sidebar',
+    methods: {
+      _handleOnSelect (name) {
+        this.$emit('on-select', name)
+      }
+    }
   }
 </script>
 

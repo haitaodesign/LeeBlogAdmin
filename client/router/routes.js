@@ -26,12 +26,12 @@ export default [{
     },
     component: () => import('@/category')
   }, {
-    path: '/label',
+    path: '/tag',
     name: '标签管理',
     meta: {
       title: 'leeadmin-标签管理'
     },
-    component: () => import('@/label')
+    component: () => import('@/tag')
   }, {
     path: '/user',
     name: '用户管理',

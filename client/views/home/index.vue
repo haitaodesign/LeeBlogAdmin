@@ -1,7 +1,7 @@
 <template>
   <div>
     <lee-header></lee-header>
-    <lee-side-bar></lee-side-bar>
+    <lee-side-bar @on-select="handleOnSelect"></lee-side-bar>
     <lee-bread></lee-bread>
     <lee-main></lee-main>
     <!-- <lee-footer></lee-footer> -->
@@ -16,6 +16,11 @@ import LeeFooter from '@views/footer/index'
 import LeeBread from '@views/bread/index'
 export default {
   name: 'home',
+  methods: {
+    handleOnSelect (name) {
+      this.$router.push({name})
+    }
+  },
   components: {
     LeeHeader,
     LeeSideBar,
