@@ -66,6 +66,7 @@
     "axios": "^0.18.0",
     "babel-plugin-transform-runtime": "^6.23.0",
     "iview": "^3.1.0",
+    "iview-editor": "^1.1.1",
     "qs": "^6.5.2",
     "vue": "^2.5.16",
     "vue-router": "^3.0.1",
