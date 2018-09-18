@@ -1,0 +1,1 @@
+export const SET_CATEGORYLIST = 'SET_CATEGORYLIST'
