@@ -16,6 +16,7 @@ class BaseAxios {
     return this.$http.get(url, config)
   }
   post (url, data = undefined, config = {}) {
+    console.log(data)
     return this.$http.post(url, data, {...this.OptionsDefault, ...config})
   }
   put (url, data = undefined, config = {}) {
