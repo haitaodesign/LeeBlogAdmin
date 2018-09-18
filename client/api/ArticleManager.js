@@ -1,7 +1,7 @@
 import BaseAxios from '../utils/httpClient/index'
 class ArticleManager extends BaseAxios {
-  getArticleList (page = 0, size = 10) {
-    return this.get(`/articles?page=${page}&size=${size}`)
+  getArticleList (data) {
+    return this.post('articles', data)
   }
   add (data) {
     return this.post('article/add', data)
