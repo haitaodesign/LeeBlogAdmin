@@ -4,7 +4,7 @@
       <search-form @on-add="_handleOnAddClick" @on-update="_handleOnUpdateClick" @on-delete="_handleOnDeleteClick"></search-form>
     </div>
     <div class="index-table">
-      <lee-table :data="data" :columns="columns" @on-select="_handleOnSelect"></lee-table>
+      <lee-table :data="data" :columns="columns" :pageTotal="page.total" @on-select="_handleOnSelect" @on-page-change="_handlePageChange"></lee-table>
     </div>
     <lee-modal :show="isModalShow" :title="title" :edit="form" @on-ok="_handleOnOkClick" @on-cancel="_handleOnCancelClick"></lee-modal>
   </div>
@@ -25,6 +25,7 @@ export default {
         pageSize: 10
       },
       data: [],
+      page: {},
       columns: [{
         type: 'selection',
         width: 60,
@@ -53,14 +54,19 @@ export default {
   },
   methods: {
     async _getUserList () {
-      const { data: { code, data } } = await user.getUserList(this.params)
+      const { data: { code, data, page } } = await user.getUserList(this.params)
       if (code === 0) {
         this.data = data
+        this.page = page
       }
     },
     _handleOnSelect (selection, row) {
       this.curRow = row
       this.selection = selection
+    },
+    _handlePageChange (value) {
+      this.params.current = value
+      this._getUserList()
     },
     _handleOnAddClick () {
       this.title = '添加用户'
