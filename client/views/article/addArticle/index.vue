@@ -1,17 +1,28 @@
 <template>
   <div class="add-article">
-    <Row>
-      <Input v-model="params.title" placeholder="请输入文章标题" />
+    <Row :gutter="20">
+      <Col span="20">
+        <Input v-model="params.title" placeholder="请输入文章标题" />
+      </Col>
+      <Col span="4">
+        <add-article-dropdown></add-article-dropdown>
+      </Col>
     </Row>
     <div class="add-editor">
       <i-editor v-model="params.content" :autosize="{ minRows: 25 }"></i-editor>
     </div>
-    <Button type="primary" long @click="_handleAddArticleClick">保存</Button>
+    <Modal
+      v-model="showModal"
+      title="文章发布"
+    >
+    </Modal>
+
   </div>
 </template>
 
 <script>
 import ArticleManager from '@api/ArticleManager'
+import addArticleDropdown from '../addArticleDropdown'
 const article = new ArticleManager()
 export default {
   name: 'addArticle',
@@ -24,7 +35,9 @@ export default {
         isPublish: false,
         category_id: '',
         label_id: ''
-      }
+      },
+      showModal: false,
+      showDropdown: false
     }
   },
   watch: {
@@ -45,7 +58,8 @@ export default {
       if (title === '' || content === '') {
         this.$Message.error('标题和内容不难为空！')
       } else {
-        this._Add(this.params)
+        this.showDropdown = true
+        // this._Add(this.params)
       }
     },
     async _Add (params) {
@@ -60,7 +74,13 @@ export default {
       } catch (error) {
         this.$Message.error(error)
       }
+    },
+    _handleDropdownClose () {
+      this.showDropdown = false
     }
+  },
+  components: {
+    addArticleDropdown
   }
 }
 </script>
