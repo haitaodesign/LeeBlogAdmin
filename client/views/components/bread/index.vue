@@ -1,9 +1,7 @@
 <template>
   <div class="lee-bread">
      <Breadcrumb>
-        <BreadcrumbItem>Home</BreadcrumbItem>
-        <BreadcrumbItem>Components</BreadcrumbItem>
-        <BreadcrumbItem>Breadcrumb</BreadcrumbItem>
+        <BreadcrumbItem v-for="item in data" :key="item.id">{{item.name}}</BreadcrumbItem>
     </Breadcrumb>
   </div>
 </template>

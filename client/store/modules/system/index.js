@@ -1,4 +1,6 @@
-import { getJsonTree } from '@utils/jsonTree'
+// import { getJsonTree } from '@utils/jsonTree'
+// import { cloneDeep } from '@utils/lodash'
+import { SET_BREADLIST } from './mutation-types'
 export default {
   namespaced: true,
   state: {
@@ -9,18 +11,15 @@ export default {
       { id: 4, parent_id: 1, name: '标签管理' },
       { id: 5, parent_id: 0, name: '系统管理' },
       { id: 6, parent_id: 5, name: '用户管理' }
-    ]
+    ],
+    breadList: []
   },
   getters: {
-    getMenuList: state => {
-      return getJsonTree(state.menuList, {
-        id: 'id',
-        pid: 'parent_id',
-        children: 'children'
-      })
-    }
   },
   mutations: {
+    [SET_BREADLIST] (state, payload) {
+      state.breadList = payload
+    }
   },
   actions: {
   }

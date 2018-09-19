@@ -1,7 +1,7 @@
 <template>
   <div class="lee-sidebar">
     <Menu active-name="文章管理" @on-select="_handleOnSelect">
-        <MenuGroup v-for="item in getMenuList" :key="item.id" :title="item.name">
+        <MenuGroup v-for="item in list" :key="item.id" :title="item.name">
             <MenuItem v-for="children in item.children" :key="children.id" :name="children.name">
                 {{children.name}}
             </MenuItem>
@@ -11,17 +11,15 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
 export default {
   name: 'sidebar',
-  data () {
-    return {
+  props: {
+    list: {
+      type: Array,
+      default () {
+        return []
+      }
     }
-  },
-  computed: {
-    ...mapGetters('System', [
-      'getMenuList'
-    ])
   },
   methods: {
     _handleOnSelect (name) {
