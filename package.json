@@ -63,6 +63,7 @@
     "webpack-merge": "^4.1.2"
   },
   "dependencies": {
+    "@aximario/json-tree": "^1.0.6",
     "axios": "^0.18.0",
     "babel-plugin-transform-runtime": "^6.23.0",
     "iview": "^3.1.0",
