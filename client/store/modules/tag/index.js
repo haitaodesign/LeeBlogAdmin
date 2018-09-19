@@ -10,7 +10,7 @@ export default {
   },
   mutations: {
     [SET_TAGLIST] (state, payload) {
-      state.categoryList = payload
+      state.tagList = payload
     }
   },
   actions: {
