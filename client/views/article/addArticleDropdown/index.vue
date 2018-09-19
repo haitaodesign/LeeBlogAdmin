@@ -14,19 +14,15 @@
               <div class="add-article-dropdown-category">
                 <h2>选择分类</h2>
                 <!-- 分类选择组件（最快捷方式就是<Select>组件） -->
-                <Select>
-                  <Option value="1">1</Option>
-                  <Option value="2">2</Option>
-                  <Option value="3">3</Option>
+                <Select v-model="params.categoryId">
+                  <Option v-for="item in categoryList" :value="item._id" :key="item._id">{{ item.name }}</Option>
                 </Select>
               </div>
               <div class="add-article-dropdown-tag">
                 <h2>标签</h2>
                 <!-- 搜索多选框，暂时不支持远程搜索 -->
-                <Select>
-                  <Option value="1">1</Option>
-                  <Option value="2">2</Option>
-                  <Option value="3">3</Option>
+                <Select multiple v-model="params.labelId">
+                  <Option v-for="item in tagList"  :value="item._id" :key="item._id">{{ item.name }}</Option>
                 </Select>
               </div>
               <div class="add-article-dropdown-button">
@@ -39,30 +35,44 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 export default {
   name: 'addArticleDropDown',
   computed: {
     ...mapState({
-      categoryList: state => state.Category.categoryList
+      categoryList: state => state.Category.categoryList,
+      tagList: state => state.Tag.tagList
     })
   },
   data () {
     return {
       showDropdown: false,
       params: {
-        category_id: '',
-        label_id: ''
+        categoryId: '',
+        labelId: []
       }
     }
   },
+  mounted () {
+    this.getCategoryList()
+    this.getTagList()
+  },
   methods: {
+    ...mapActions('Category', [
+      'getCategoryList'
+    ]),
+    ...mapActions('Tag', [
+      'getTagList'
+    ]),
     _handleDropdownClose () {
-      this.showDropdown = false
-      this.$emit('on-click-release')
+      this.$emit('on-click-release', this.params)
     },
     _handleAddArticleClick () {
       this.showDropdown = !this.showDropdown
+    },
+    clearSelectParams () {
+      this.params.categoryId = ''
+      this.params.labelId = []
     }
   }
 }

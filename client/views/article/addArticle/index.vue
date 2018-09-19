@@ -5,24 +5,18 @@
         <Input v-model="params.title" placeholder="请输入文章标题" />
       </Col>
       <Col span="4">
-        <add-article-dropdown></add-article-dropdown>
+        <add-article-dropdown ref="addArticleDropdown" @on-click-release="_handleOnClickRelease"></add-article-dropdown>
       </Col>
     </Row>
     <div class="add-editor">
       <i-editor v-model="params.content" :autosize="{ minRows: 25 }"></i-editor>
     </div>
-    <Modal
-      v-model="showModal"
-      title="文章发布"
-    >
-    </Modal>
-
   </div>
 </template>
 
 <script>
-import ArticleManager from '@api/ArticleManager'
 import addArticleDropdown from '../addArticleDropdown'
+import ArticleManager from '@api/ArticleManager'
 const article = new ArticleManager()
 export default {
   name: 'addArticle',
@@ -32,12 +26,10 @@ export default {
         _id: '',
         title: '' || window.localStorage.getItem('title'),
         content: '' || window.localStorage.getItem('content'),
-        isPublish: false,
-        category_id: '',
-        label_id: ''
-      },
-      showModal: false,
-      showDropdown: false
+        isPublish: true,
+        categoryId: '',
+        labelId: ''
+      }
     }
   },
   watch: {
@@ -53,21 +45,14 @@ export default {
     }
   },
   methods: {
-    _handleAddArticleClick () {
-      const { title, content } = this.params
-      if (title === '' || content === '') {
-        this.$Message.error('标题和内容不难为空！')
-      } else {
-        this.showDropdown = true
-        // this._Add(this.params)
-      }
-    },
     async _Add (params) {
       try {
         const { data: { code, msg } } = await article.add(params)
         if (code === 0) {
           this.$Message.success(msg)
           // 保存成功返回文章列表页面
+          this.clearParams()
+          this.$refs.addArticleDropdown.showDropdown = false
         } else {
           this.$Message.error(msg)
         }
@@ -75,8 +60,48 @@ export default {
         this.$Message.error(error)
       }
     },
-    _handleDropdownClose () {
-      this.showDropdown = false
+    _handleOnClickRelease (data) {
+      const { categoryId, labelId } = data
+      this.params.categoryId = categoryId
+      this.params.labelId = labelId.join(',')
+      const msg = this.validateParams(this.params)
+      if (msg === true) {
+        // 验证通过进行请求
+        this._Add(this.params)
+        this.$refs.addArticleDropdown.showDropdown = false
+      } else {
+        // 提示错误信息
+        this.$Message.warning(msg)
+      }
+    },
+    /**
+     * 验证输入参数
+    */
+    validateParams (data) {
+      const { title, content, categoryId, labelId } = data
+      let msg = ''
+      if (title === '') {
+        msg = '文章标题不能为空!'
+      } else if (content === '') {
+        msg = '内容不能为空!'
+      } else if (categoryId === '') {
+        msg = '选择分类不能为空!'
+      } else if (labelId === '') {
+        msg = '选择标签不难为空!'
+      } else {
+        msg = true
+      }
+      return msg
+    },
+    /**
+     * 文章发布成功之后清空参数
+    */
+    clearParams () {
+      this.params.title = ''
+      this.params.content = ''
+      window.localStorage.removeItem('title')
+      window.localStorage.removeItem('content')
+      this.$refs.addArticleDropdown.clearSelectParams()
     }
   },
   components: {
