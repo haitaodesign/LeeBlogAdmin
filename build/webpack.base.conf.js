@@ -15,7 +15,8 @@ module.exports = {
       '@views': path.resolve(__dirname, '..', 'client/views/components'),
       '@': path.resolve(__dirname, '..', 'client/views'),
       '@com': path.resolve(__dirname, '..', 'client/components'),
-      '@api': path.resolve(__dirname, '..', 'client/api')
+      '@api': path.resolve(__dirname, '..', 'client/api'),
+      '@utils': path.resolve(__dirname, '..', 'client/utils')
     }
   },
   module: {
