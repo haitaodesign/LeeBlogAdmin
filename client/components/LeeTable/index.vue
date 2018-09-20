@@ -1,7 +1,7 @@
 <template>
   <div class="lee-table">
     <div class="lee-table-list">
-      <Table :columns="columns" :data="data" @on-select="_handleOnSelect"></Table>
+      <Table :columns="columns" :data="data" @on-selection-change="_handleOnSelect"></Table>
     </div>
     <div class="lee-table-page clearfix">
       <Page class="lee-table-page-position" :total="pageTotal" @on-change="handleOnChange"></Page>
@@ -42,7 +42,8 @@ export default {
     handleOnChange (value) {
       this.$emit('on-page-change', value)
     },
-    _handleOnSelect (selection, row) {
+    _handleOnSelect (selection) {
+      const row = selection[0] || []
       this.$emit('on-select', selection, row)
     }
   }
