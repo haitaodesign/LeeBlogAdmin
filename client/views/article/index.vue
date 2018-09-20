@@ -78,7 +78,14 @@ export default {
 
     },
     _handleOnUpdateClick () {
-      this.$router.push({name: '新建文章', query: {type: 'edit'}})
+      // 判断是否有选中的数据
+      const len = this.selection.length
+      if (len > 0) {
+        const _id = this.curRow._id
+        this.$router.push({name: '新建文章', query: {type: 'edit', id: _id}})
+      } else {
+        this.$Message.error('目前只支持选择修改一条数据！')
+      }
     },
     _handleOnDeleteClick () {
       const len = this.selection.length
