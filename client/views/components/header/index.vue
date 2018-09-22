@@ -4,25 +4,39 @@
       leeadmin
     </div>
     <div class="lee-header-nav">
-      <Menu mode="horizontal" active-name="">
-        <Submenu name="3">
-            <template slot="title">
+      <Row>
+        <Col>
+           <Dropdown placement="bottom-end" @on-click="_handleOnClick">
+            <a href="javascript:void(0)">
                 admin
-            </template>
-            <MenuGroup title="使用">
-                <MenuItem name="3-1">新增和启动</MenuItem>
-                <MenuItem name="3-2">活跃分析</MenuItem>
-                <MenuItem name="3-3">时段分析</MenuItem>
-            </MenuGroup>
-        </Submenu>
-    </Menu>
+                <Icon type="ios-arrow-down"></Icon>
+            </a>
+            <DropdownMenu slot="list">
+                <DropdownItem name="安全退出">安全退出</DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
+        </Col>
+      </Row>
     </div>
   </div>
 </template>
 
 <script>
   export default {
-    name: 'leeheader'
+    name: 'leeheader',
+    data () {
+      return {
+      }
+    },
+    methods: {
+      _handleOnClick (name) {
+        console.log(name)
+        if (name === '安全退出') {
+          window.localStorage.removeItem('token')
+          this.$router.replace({ path: 'login' })
+        }
+      }
+    }
   }
 </script>
 
@@ -31,6 +45,7 @@
   position absolute
   width 100%
   height 60px
+  line-height 60px
   border-bottom 1px solid #eee
   .lee-header-logo
     float left
