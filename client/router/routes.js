@@ -6,6 +6,7 @@ export default [{
   meta: {
     title: '首页'
   },
+  redirect: '/article',
   component: () => import('@/home'),
   children: [{
     path: '/article',

@@ -35,6 +35,7 @@ service.interceptors.response.use(
       switch (error.response.status) {
         case 401:
           // 返回 401 清除token信息并跳转到登录页面
+          window.localStorage.removeItem('token')
           router().replace({
             path: 'login'
           })
