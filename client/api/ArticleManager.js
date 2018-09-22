@@ -12,6 +12,9 @@ class ArticleManager extends BaseAxios {
   _delete (data) {
     return this.delete('article/delete' + '/' + data._id)
   }
+  getArticleById (data) {
+    return this.post('article/getArticleById', data)
+  }
 }
 
 export default ArticleManager

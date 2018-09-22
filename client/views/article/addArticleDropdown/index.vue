@@ -38,6 +38,14 @@
 import { mapState, mapActions } from 'vuex'
 export default {
   name: 'addArticleDropDown',
+  props: {
+    dropdownParams: {
+      type: Object,
+      default () {
+        return {}
+      }
+    }
+  },
   computed: {
     ...mapState({
       categoryList: state => state.Category.categoryList,
@@ -56,6 +64,11 @@ export default {
   mounted () {
     this.getCategoryList()
     this.getTagList()
+    // 初始化编辑文章的数据, 这里更严谨的做法应该是等目录分类跟标签的数据都初始化成功之后赋值，需要优化
+    // 建议方式：Promise.all
+    setTimeout(() => {
+      this._initDropdownData(this.dropdownParams)
+    }, 100)
   },
   methods: {
     ...mapActions('Category', [
@@ -73,6 +86,10 @@ export default {
     clearSelectParams () {
       this.params.categoryId = ''
       this.params.labelId = []
+    },
+    _initDropdownData (params) {
+      console.log(params)
+      this.params = params
     }
   }
 }

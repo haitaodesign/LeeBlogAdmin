@@ -5,7 +5,7 @@
         <Input v-model="params.title" placeholder="请输入文章标题" />
       </Col>
       <Col span="4">
-        <add-article-dropdown ref="addArticleDropdown" @on-click-release="_handleOnClickRelease"></add-article-dropdown>
+        <add-article-dropdown ref="addArticleDropdown" :dropdownParams="dropdownParams" @on-click-release="_handleOnClickRelease"></add-article-dropdown>
       </Col>
     </Row>
     <div class="add-editor">
@@ -29,6 +29,8 @@ export default {
         isPublish: true,
         categoryId: '',
         labelId: ''
+      },
+      dropdownParams: {
       }
     }
   },
@@ -43,6 +45,10 @@ export default {
         window.localStorage.setItem('title', val)
       }
     }
+  },
+  mounted () {
+    // 获取修改内容
+    this._initUpdateArticle()
   },
   methods: {
     async _Add (params) {
@@ -60,6 +66,45 @@ export default {
         this.$Message.error(error)
       }
     },
+    async _Update (params) {
+      try {
+        const { data: { code, msg } } = await article.update(params)
+        if (code === 0) {
+          this.$Message.success(msg)
+          // 修改成功返回文章列表页面
+          this.clearParams()
+          this.$router.go(-1)
+        } else {
+          this.$Message.error(msg)
+        }
+      } catch (error) {
+
+      }
+    },
+    async _getArticleById (params) {
+      try {
+        const { data: { code, data: { _id, title, content, label_id: labelId, category_id: categoryId }, msg } } = await article.getArticleById(params)
+        if (code === 0) {
+          // 文章修改数据初始化
+          this.params = {
+            _id,
+            title,
+            content,
+            labelId: '',
+            categoryId: ''
+          }
+          // 给组件传入参数时，尽量处理好数据再传递
+          this.dropdownParams = {
+            labelId: labelId.split(','),
+            categoryId
+          }
+        } else {
+          this.$Message.error(msg)
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    },
     _handleOnClickRelease (data) {
       const { categoryId, labelId } = data
       this.params.categoryId = categoryId
@@ -67,12 +112,22 @@ export default {
       const msg = this.validateParams(this.params)
       if (msg === true) {
         // 验证通过进行请求
-        this._Add(this.params)
-        this.$refs.addArticleDropdown.showDropdown = false
+        const type = this.$route.query.type
+        if (type === 'add') {
+          this._Add(this.params)
+          this.$refs.addArticleDropdown.showDropdown = false
+        } else if (type === 'edit') {
+          this._Update(this.params)
+        }
       } else {
         // 提示错误信息
         this.$Message.warning(msg)
       }
+    },
+    _initUpdateArticle () {
+      // 获取_id
+      const _id = this.$route.query.id
+      this._getArticleById({_id})
     },
     /**
      * 验证输入参数
