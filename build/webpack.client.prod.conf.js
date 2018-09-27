@@ -20,6 +20,9 @@ const prodWebpackConfig = merge(baseWebpackConfig, {
           }
         }, 'stylus-loader']
       })
+    }, {
+      test: /\.css$/,
+      loader: ['style-loader', 'css-loader']
     }]
   },
   optimization: {
@@ -32,7 +35,11 @@ const prodWebpackConfig = merge(baseWebpackConfig, {
     new webpack.DefinePlugin({
       'process.env': env
     }),
-    new HtmlWebpackPlugin({}),
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: path.resolve('./client', `index.html`),
+      inject: true
+    }),
     // contenthash报错
     new ExtractEextWebpackPlugin({
       filename: 'styles.[id].[name].css',
