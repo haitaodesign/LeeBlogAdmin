@@ -28,8 +28,8 @@ export default {
   data  () {
     return {
       params: {
-        username: 'admin0',
-        password: '123456'
+        username: '',
+        password: ''
       },
       loginRules: {
         username: [
