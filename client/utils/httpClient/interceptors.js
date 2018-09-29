@@ -5,7 +5,8 @@ import { Message } from 'iview'
 import router from '../../router'
 
 const service = Axios.create({
-  baseURL: 'http://localhost:3000/api'
+  // baseURL: 'http://localhost:3000/api'
+  baseURL: 'http://39.108.159.185:80/api'
 })
 
 service.interceptors.request.use(
@@ -24,9 +25,9 @@ service.interceptors.request.use(
 service.interceptors.response.use(
   config => {
     // 根据返回状态码定制一套提示方案
-    const { code, message } = config.data
+    const { code, msg } = config.data
     if (code !== 0) {
-      Message.error(message)
+      Message.error(msg)
     }
     return config
   },
