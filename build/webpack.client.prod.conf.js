@@ -4,6 +4,7 @@ const webpack = require('webpack')
 const merge = require('webpack-merge')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractEextWebpackPlugin = require('extract-text-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 const env = require('../config/prod.env')
 const baseWebpackConfig = require('./webpack.base.conf')
 
@@ -44,6 +45,12 @@ const prodWebpackConfig = merge(baseWebpackConfig, {
     new ExtractEextWebpackPlugin({
       filename: 'styles.[id].[name].css',
       allChunks: true
+    }),
+    new CleanWebpackPlugin(['dist'], {
+      // PS：必须正确指定删除的根目录，否则删除文件无效
+      root: path.resolve(__dirname, '../'),
+      verbose: true,
+      dry: false
     })
   ]
 })
