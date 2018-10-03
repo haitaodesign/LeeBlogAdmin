@@ -1,4 +1,5 @@
 const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
   mode: process.env.NODE_ENV || 'production', // development || production
   target: 'web',
@@ -52,5 +53,13 @@ module.exports = {
         name: 'resources/[path][name].[hash:8].[ext]'
       }
     }]
-  }
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: path.resolve('./client', `index.html`),
+      inject: true,
+      favicon: path.resolve(__dirname, '../client/assets/images/favicon.png')
+    })
+  ]
 }

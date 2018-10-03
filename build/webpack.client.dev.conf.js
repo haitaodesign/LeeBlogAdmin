@@ -36,11 +36,6 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     new webpack.DefinePlugin({
       'process.env': env
     }),
-    new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: path.resolve('./client', `index.html`),
-      inject: true
-    }),
     new webpack.HotModuleReplacementPlugin()
   ]
 })
