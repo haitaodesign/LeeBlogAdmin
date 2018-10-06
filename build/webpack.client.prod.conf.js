@@ -2,7 +2,6 @@
 const path = require('path')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractEextWebpackPlugin = require('extract-text-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const env = require('../config/prod.env')

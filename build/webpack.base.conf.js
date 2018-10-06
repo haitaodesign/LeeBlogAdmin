@@ -1,5 +1,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const WebpackBar = require('webpackbar')
 module.exports = {
   mode: process.env.NODE_ENV || 'production', // development || production
   target: 'web',
@@ -60,6 +61,7 @@ module.exports = {
       template: path.resolve('./client', `index.html`),
       inject: true,
       favicon: path.resolve(__dirname, '../client/assets/images/favicon.png')
-    })
+    }),
+    new WebpackBar()
   ]
 }
