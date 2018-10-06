@@ -1,9 +1,8 @@
 'use stirct'
-const path = require('path')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 // const ExtractEextWebpackPlugin = require('extract-text-webpack-plugin')
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 const env = require('../config/dev.env')
 const baseWebpackConfig = require('./webpack.base.conf')
 
@@ -36,7 +35,13 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     new webpack.DefinePlugin({
       'process.env': env
     }),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new FriendlyErrorsWebpackPlugin({
+      compilationSuccessInfo: {
+        messages: ['You application is running here http://localhost:8088']
+      },
+      clearConsole: true
+    })
   ]
 })
 
