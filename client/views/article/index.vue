@@ -35,7 +35,11 @@ export default {
         key: 'title'
       }, {
         title: '分类',
-        key: 'category_id'
+        key: 'category_id',
+        render: (h, params) => {
+          const categoryId = params.row.category_id
+          return h('div', categoryId.name)
+        }
       }, {
         title: '标签',
         key: 'label_id'
