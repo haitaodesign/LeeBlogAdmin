@@ -28,7 +28,7 @@ export default {
         content: '' || window.localStorage.getItem('content'),
         isPublish: true,
         categoryId: '',
-        labelId: ''
+        labelId: []
       },
       dropdownParams: {
       }
@@ -95,7 +95,7 @@ export default {
           }
           // 给组件传入参数时，尽量处理好数据再传递
           this.dropdownParams = {
-            labelId: labelId.split(','),
+            labelId: labelId,
             categoryId
           }
         } else {
@@ -108,7 +108,7 @@ export default {
     _handleOnClickRelease (data) {
       const { categoryId, labelId } = data
       this.params.categoryId = categoryId
-      this.params.labelId = labelId.join(',')
+      this.params.labelId = labelId
       const msg = this.validateParams(this.params)
       if (msg === true) {
         // 验证通过进行请求

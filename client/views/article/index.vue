@@ -42,7 +42,15 @@ export default {
         }
       }, {
         title: '标签',
-        key: 'label_id'
+        key: 'label_id',
+        render: (h, params) => {
+          const labelId = params.row.label_id
+          let data = []
+          labelId.forEach(item => {
+            data.push(item.name)
+          })
+          return h('div', data.join(','))
+        }
       }, {
         title: '是否发布',
         key: 'isPublish'

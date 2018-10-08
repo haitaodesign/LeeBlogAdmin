@@ -88,7 +88,6 @@ export default {
       this.params.labelId = []
     },
     _initDropdownData (params) {
-      console.log(params)
       this.params = params
     }
   }
