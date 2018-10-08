@@ -29,6 +29,8 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     overlay: {
       errors: true
     },
+    // 自动打开浏览器
+    open: true,
     hot: true
   },
   plugins: [
