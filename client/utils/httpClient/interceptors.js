@@ -4,9 +4,12 @@ import { Message } from 'iview'
 
 import router from '../../router'
 
+import { getBaseUrl } from '@utils'
+
 const service = Axios.create({
   // baseURL: 'http://localhost:3000/api'
-  baseURL: 'http://39.108.159.185:80/api'
+  // baseURL: 'http://39.108.159.185:80/api'
+  baseURL: getBaseUrl()
 })
 
 service.interceptors.request.use(
