@@ -53,7 +53,17 @@ export default {
         }
       }, {
         title: '是否发布',
-        key: 'isPublish'
+        key: 'isPublish',
+        render: (h, params) => {
+          const isPublish = params.row.isPublish
+          let status = ''
+          if (isPublish) {
+            status = '是'
+          } else {
+            status = '否'
+          }
+          return h('div', status)
+        }
       }],
       isModalShow: false,
       title: '',
