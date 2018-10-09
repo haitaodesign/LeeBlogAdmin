@@ -35,16 +35,16 @@ export default {
         key: 'title'
       }, {
         title: '分类',
-        key: 'category_id',
+        key: 'categoryId',
         render: (h, params) => {
-          const categoryId = params.row.category_id
+          const categoryId = params.row.categoryId
           return h('div', categoryId.name)
         }
       }, {
         title: '标签',
-        key: 'label_id',
+        key: 'labelId',
         render: (h, params) => {
-          const labelId = params.row.label_id
+          const labelId = params.row.labelId
           let data = []
           labelId.forEach(item => {
             data.push(item.name)

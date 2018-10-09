@@ -83,19 +83,19 @@ export default {
     },
     async _getArticleById (params) {
       try {
-        const { data: { code, data: { _id, title, content, label_id: labelId, category_id: categoryId }, msg } } = await article.getArticleById(params)
+        const { data: { code, data: { _id, title, content, labelId, categoryId }, msg } } = await article.getArticleById(params)
         if (code === 0) {
           // 文章修改数据初始化
           this.params = {
             _id,
             title,
             content,
-            labelId: '',
+            labelId: [],
             categoryId: ''
           }
           // 给组件传入参数时，尽量处理好数据再传递
           this.dropdownParams = {
-            labelId: labelId,
+            labelId,
             categoryId
           }
         } else {
