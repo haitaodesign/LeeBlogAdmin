@@ -21,9 +21,7 @@ const prodWebpackConfig = merge(baseWebpackConfig, {
       //     }
       //   }, 'stylus-loader']
       // })
-      use: [ MiniCssExtractPlugin.loader = 'vue-style-loader', {
-        loader: 'style-loader'
-      }, {
+      use: [ MiniCssExtractPlugin.loader, {
         loader: 'css-loader'
       }, {
         loader: 'stylus-loader'
