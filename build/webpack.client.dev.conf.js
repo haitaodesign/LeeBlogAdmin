@@ -3,14 +3,16 @@ const webpack = require('webpack')
 const merge = require('webpack-merge')
 // const ExtractEextWebpackPlugin = require('extract-text-webpack-plugin')
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const env = require('../config/dev.env')
 const baseWebpackConfig = require('./webpack.base.conf')
+
 
 const devWebpackConfig = merge(baseWebpackConfig, {
   module: {
     rules: [{
-      test: /\.(styl)$/,
-      use: ['style-loader', 'css-loader', {
+      test: /\.styl(us)?$/, // 正则匹配很重要，写错了会导致编译错误
+      use: ['vue-style-loader', 'style-loader', 'css-loader', {
         loader: 'postcss-loader',
         options: {
           sourceMap: true
@@ -43,7 +45,8 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         messages: ['You application is running here http://localhost:8088']
       },
       clearConsole: true
-    })
+    }),
+    new VueLoaderPlugin()
   ]
 })
 
