@@ -2,24 +2,32 @@
 const path = require('path')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
-const ExtractEextWebpackPlugin = require('extract-text-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const env = require('../config/prod.env')
 const baseWebpackConfig = require('./webpack.base.conf')
 
 const prodWebpackConfig = merge(baseWebpackConfig, {
   module: {
     rules: [{
-      test: /\.styl$/,
-      use: ExtractEextWebpackPlugin.extract({
-        fallback: 'style-loader',
-        use: ['css-loader', {
-          loader: 'postcss-loader',
-          options: {
-            sourceMap: true
-          }
-        }, 'stylus-loader']
-      })
+      test: /\.styl(us)?$/,
+      // use: MiniCssExtractPlugin.extract({
+      //   fallback: 'vue-style-loader',
+      //   use: ['css-loader', {
+      //     loader: 'postcss-loader',
+      //     options: {
+      //       sourceMap: true
+      //     }
+      //   }, 'stylus-loader']
+      // })
+      use: [ MiniCssExtractPlugin.loader = 'vue-style-loader', {
+        loader: 'style-loader'
+      }, {
+        loader: 'css-loader'
+      }, {
+        loader: 'stylus-loader'
+      }]
     }, {
       test: /\.css$/,
       loader: ['style-loader', 'css-loader']
@@ -36,8 +44,8 @@ const prodWebpackConfig = merge(baseWebpackConfig, {
       'process.env': env
     }),
     // contenthash报错
-    new ExtractEextWebpackPlugin({
-      filename: 'styles.[id].[name].css',
+    new MiniCssExtractPlugin({
+      filename: 'styles.[name].css',
       allChunks: true
     }),
     new CleanWebpackPlugin(['dist'], {
@@ -45,7 +53,8 @@ const prodWebpackConfig = merge(baseWebpackConfig, {
       root: path.resolve(__dirname, '../'),
       verbose: true,
       dry: false
-    })
+    }),
+    new VueLoaderPlugin()
   ]
 })
 

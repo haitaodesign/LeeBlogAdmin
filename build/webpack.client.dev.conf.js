@@ -7,7 +7,6 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const env = require('../config/dev.env')
 const baseWebpackConfig = require('./webpack.base.conf')
 
-
 const devWebpackConfig = merge(baseWebpackConfig, {
   module: {
     rules: [{
