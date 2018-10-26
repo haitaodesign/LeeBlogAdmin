@@ -6,5 +6,8 @@ before_install:
   -in id_rsa.enc -out ~/.ssh/id_rsa -d
 - chmod 600 ~/.ssh/id_rsa
 - echo -e "Host 39.108.159.185\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+script:
+- yarn run lint-fix
+- yarn run lint
 after_success:
 - ssh root@39.108.159.185 'cd /usr/share/nginx/blogadmin/LeeBlogAdmin && git pull && yarn && yarn run build'
