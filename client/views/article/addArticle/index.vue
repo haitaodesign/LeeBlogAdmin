@@ -127,7 +127,7 @@ export default {
     _initUpdateArticle () {
       // 获取_id
       const _id = this.$route.query.id
-      this._getArticleById({_id})
+      this._getArticleById({_id, isEdit: true})
     },
     /**
      * 验证输入参数
