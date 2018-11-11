@@ -22,7 +22,9 @@ export default {
     return {
       params: {
         current: 1,
-        pageSize: 10
+        pageSize: 10,
+        categoryId: '',
+        labelId: ''
       },
       data: [],
       page: {},
