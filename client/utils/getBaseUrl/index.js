@@ -9,13 +9,11 @@ export default () => {
   }]
   // 获取当前浏览器的host
   const host = window.location.host.split(':')[0]
-  let currentUrl = ''
-  devUrls.forEach(item => {
-    if (item.host === host) {
-      currentUrl = devUrl
-    } else {
-      currentUrl = prodUrl
-    }
-  })
+  let currentUrl = '' || devUrl
+  if (host === devUrls[0].host) {
+    currentUrl = devUrl
+  } else {
+    currentUrl = prodUrl
+  }
   return currentUrl
 }
