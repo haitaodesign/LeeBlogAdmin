@@ -10,10 +10,13 @@ export default () => {
   // 获取当前浏览器的host
   const host = window.location.host.split(':')[0]
   let currentUrl = '' || devUrl
-  if (host === devUrls[0].host) {
-    currentUrl = devUrl
-  } else {
-    currentUrl = prodUrl
-  }
+  devUrls.forEach((item) => {
+    if (item.host === host) {
+      currentUrl = devUrl
+    } else {
+      currentUrl = prodUrl
+    }
+  })
+  console.info('当前接口地址：', currentUrl)
   return currentUrl
 }
