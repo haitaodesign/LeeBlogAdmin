@@ -62,7 +62,10 @@ export default {
   },
   mounted () {
     // 获取修改内容
-    this._initUpdateArticle()
+    const type = this.$route.query.type
+    if (type === 'edit') {
+      this._initUpdateArticle()
+    }
   },
   methods: {
     async _Add (params) {
