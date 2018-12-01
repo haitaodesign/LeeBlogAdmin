@@ -61,14 +61,12 @@ export default {
       }
     }
   },
-  mounted () {
-    this.getCategoryList()
-    this.getTagList()
-    // 初始化编辑文章的数据, 这里更严谨的做法应该是等目录分类跟标签的数据都初始化成功之后赋值，需要优化
-    // 建议方式：Promise.all
-    setTimeout(() => {
+  watch: {
+    dropdownParams: function (value, oldValue) {
       this._initDropdownData(this.dropdownParams)
-    }, 100)
+    }
+  },
+  mounted () {
   },
   methods: {
     ...mapActions('Category', [
@@ -88,7 +86,9 @@ export default {
       this.params.labelId = []
     },
     _initDropdownData (params) {
-      this.params = params
+      Promise.all([this.getCategoryList(), this.getTagList()]).then(res => {
+        this.params = params
+      })
     }
   }
 }

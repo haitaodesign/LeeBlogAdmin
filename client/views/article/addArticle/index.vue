@@ -112,8 +112,8 @@ export default {
           }
           // 给组件传入参数时，尽量处理好数据再传递
           this.dropdownParams = {
-            labelId,
-            categoryId
+            labelId: this.initLabelIds(labelId),
+            categoryId: categoryId._id
           }
         } else {
           this.$Message.error(msg)
@@ -189,6 +189,13 @@ export default {
       } else {
         this.$Message.error(msg)
       }
+    },
+    initLabelIds (labelId) {
+      let array = []
+      labelId.forEach(element => {
+        array.push(element._id)
+      })
+      return array
     }
   },
   components: {
