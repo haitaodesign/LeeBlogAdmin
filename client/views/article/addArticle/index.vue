@@ -1,8 +1,19 @@
 <template>
   <div class="add-article">
     <Row :gutter="20">
-      <Col span="20">
+      <Col span="18">
         <Input v-model="params.title" placeholder="请输入文章标题" />
+      </Col>
+      <Col span="2">
+        <Poptip placement="bottom">
+          <div class="add-article-headerImg">
+            <Icon type="md-image" size="32"/>
+          </div>
+          <div slot="content">
+            <h3>文章封面图片上传</h3>
+            <LeeUpload></LeeUpload>
+          </div>
+        </Poptip>
       </Col>
       <Col span="4">
         <add-article-dropdown ref="addArticleDropdown" :dropdownParams="dropdownParams" @on-click-release="_handleOnClickRelease"></add-article-dropdown>
@@ -16,6 +27,7 @@
 
 <script>
 import addArticleDropdown from '../addArticleDropdown'
+import LeeUpload from '@com/LeeUpload/index.vue'
 import ArticleManager from '@api/ArticleManager'
 const article = new ArticleManager()
 export default {
@@ -160,11 +172,15 @@ export default {
     }
   },
   components: {
-    addArticleDropdown
+    addArticleDropdown,
+    LeeUpload
   }
 }
 </script>
 
 <style lang="stylus" scoped>
+.add-article-headerImg:hover
+  color #2d8cf0
+  cursor pointer
 </style>
 
