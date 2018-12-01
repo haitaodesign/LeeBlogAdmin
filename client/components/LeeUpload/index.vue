@@ -30,7 +30,7 @@
     name: 'LeeUpload',
     data () {
       return {
-        action: 'http://localhost:3000/api/upload',
+        action: 'http://localhost:3000/api/img/upload',
         headers: {
           Authorization: 'Bearer ' + window.localStorage.getItem('token')
         },
