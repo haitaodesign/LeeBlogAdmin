@@ -11,7 +11,7 @@
           </div>
           <div slot="content">
             <h3>文章封面图片上传</h3>
-            <LeeUpload></LeeUpload>
+            <LeeUpload @on-remove-img="handleOnRemoveImgClick"></LeeUpload>
           </div>
         </Poptip>
       </Col>
@@ -29,7 +29,9 @@
 import addArticleDropdown from '../addArticleDropdown'
 import LeeUpload from '@com/LeeUpload/index.vue'
 import ArticleManager from '@api/ArticleManager'
+import UploadManager from '@api/UploadManager'
 const article = new ArticleManager()
+const upload = new UploadManager()
 export default {
   name: 'addArticle',
   data () {
@@ -169,6 +171,21 @@ export default {
       window.localStorage.removeItem('title')
       window.localStorage.removeItem('content')
       this.$refs.addArticleDropdown.clearSelectParams()
+    },
+    /**
+     * 删除文章封面图片
+    */
+    handleOnRemoveImgClick (item) {
+      const { key } = item.response.data
+      this._deleteImg({key})
+    },
+    async _deleteImg (key) {
+      const { data: { code, msg } } = await upload._delete(key)
+      if (code === 0) {
+        this.$Message.success(msg)
+      } else {
+        this.$Message.error(msg)
+      }
     }
   },
   components: {

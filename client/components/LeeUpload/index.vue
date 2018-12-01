@@ -45,6 +45,7 @@
     methods: {
       handleRemove (item) {
         this.uploadList = []
+        this.$emit('on-remove-img', item)
       }
     }
   }
