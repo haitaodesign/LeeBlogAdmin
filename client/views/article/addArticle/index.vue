@@ -20,7 +20,7 @@
       </Col>
     </Row>
     <div class="add-editor">
-      <i-editor v-model="params.content" :autosize="{ minRows: 25 }"></i-editor>
+      <i-editor v-model="params.content" :autosize="{ minRows: 25 }" :config="config" :img-url="handleReturnImgUrl"></i-editor>
     </div>
   </div>
 </template>
@@ -45,6 +45,12 @@ export default {
         labelId: []
       },
       dropdownParams: {
+      },
+      config: {
+        action: 'http://localhost:3000/api/img/upload',
+        headers: {
+          Authorization: 'Bearer ' + window.localStorage.getItem('token')
+        }
       }
     }
   },
@@ -196,6 +202,9 @@ export default {
         array.push(element._id)
       })
       return array
+    },
+    handleReturnImgUrl (res) {
+      return res.data.url
     }
   },
   components: {
