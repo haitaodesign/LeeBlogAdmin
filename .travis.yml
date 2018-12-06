@@ -16,6 +16,6 @@ script:
 after_success:
 # 复制到目前服务器
 # 解压覆盖
-- tar -tvjf dist.tar.bz2 dist
+- tar -cvjpf dist.tar.bz2 dist
 - scp dist.tar.bz2 root@39.108.159.185:/usr/share/nginx/blogadmin/LeeBlogAdmin
 # - ssh root@39.108.159.185 'cd /usr/share/nginx/blogadmin/LeeBlogAdmin && git pull && yarn && yarn run build'
