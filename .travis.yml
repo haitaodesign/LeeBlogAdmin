@@ -9,5 +9,13 @@ before_install:
 script:
 - yarn run lint-fix
 - yarn run lint
+- yarn run build
+
+# 打包
+# 压缩
 after_success:
-- ssh root@39.108.159.185 'cd /usr/share/nginx/blogadmin/LeeBlogAdmin && git pull && yarn && yarn run build'
+# 复制到目前服务器
+# 解压覆盖
+- tar -tvjf dist.tar.bz2
+- scp dist.tar.bz2 root@39.108.159.185:/usr/share/nginx/blogadmin/LeeBlogAdmin
+# - ssh root@39.108.159.185 'cd /usr/share/nginx/blogadmin/LeeBlogAdmin && git pull && yarn && yarn run build'
