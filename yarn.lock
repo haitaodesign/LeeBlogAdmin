@@ -3796,8 +3796,8 @@ he@1.1.x, he@^1.1.0:
   resolved "http://registry.npm.taobao.org/he/download/he-1.1.1.tgz#93410fd21b009735151f8868c2f271f3427e23fd"
 
 highlightjs@^9.10.0:
-  version "9.10.0"
-  resolved "http://registry.npm.taobao.org/highlightjs/download/highlightjs-9.10.0.tgz#fca9b78ddaa3b1abca89d6c3ee105ad270a80190"
+  version "9.12.0"
+  resolved "http://registry.npm.taobao.org/highlightjs/download/highlightjs-9.12.0.tgz#9b84eb42a7aa8488eb69ac79fec44cf495bf72a1"
 
 hmac-drbg@^1.0.0:
   version "1.0.1"
@@ -4519,15 +4519,6 @@ isurl@^1.0.0-alpha5:
     has-to-string-tag-x "^1.2.0"
     is-object "^1.0.1"
 
-iview-editor@^1.1.1:
-  version "1.1.1"
-  resolved "http://registry.npm.taobao.org/iview-editor/download/iview-editor-1.1.1.tgz#d3698cd575f4de8d8a027b0c52cc2263eeeab5ba"
-  dependencies:
-    highlightjs "^9.10.0"
-    iview "^2.11.0"
-    marked "^0.3.19"
-    vue "^2.5.16"
-
 iview@^2.11.0:
   version "2.14.3"
   resolved "http://registry.npm.taobao.org/iview/download/iview-2.14.3.tgz#0f32a450f956cce2ac60a4df5a6eba30816a0708"
@@ -4686,6 +4677,15 @@ lcid@^2.0.0:
   resolved "http://registry.npm.taobao.org/lcid/download/lcid-2.0.0.tgz#6ef5d2df60e52f82eb228a4c373e8d1f397253cf"
   dependencies:
     invert-kv "^2.0.0"
+
+leeblog-iview-editor@^1.0.0:
+  version "1.0.0"
+  resolved "http://registry.npm.taobao.org/leeblog-iview-editor/download/leeblog-iview-editor-1.0.0.tgz#997685798534cba6392e09e3c49d671a975cd9f1"
+  dependencies:
+    highlightjs "^9.10.0"
+    iview "^2.11.0"
+    marked "^0.3.19"
+    vue "^2.5.16"
 
 levn@^0.3.0, levn@~0.3.0:
   version "0.3.0"

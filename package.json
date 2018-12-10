@@ -71,7 +71,7 @@
     "axios": "^0.18.0",
     "babel-plugin-transform-runtime": "^6.23.0",
     "iview": "^3.1.0",
-    "iview-editor": "^1.1.1",
+    "leeblog-iview-editor": "^1.0.0",
     "lodash.clonedeep": "^4.5.0",
     "qs": "^6.5.2",
     "vue": "^2.5.16",
