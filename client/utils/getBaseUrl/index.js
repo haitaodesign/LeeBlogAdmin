@@ -3,8 +3,8 @@ const { devUrl, prodUrl } = config
 export default () => {
   // 获取当前浏览器的host
   const host = window.location.host.split(':')[0]
-  let currentUrl = '' || devUrl
-  if (host === 'localhost' || '0.0.0.0') {
+  let currentUrl = ''
+  if (host === '0.0.0.0') {
     currentUrl = devUrl
   } else {
     currentUrl = prodUrl
