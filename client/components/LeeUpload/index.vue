@@ -26,11 +26,12 @@
 </template>
 
 <script>
+  import { getBaseUrl } from '@utils'
   export default {
     name: 'LeeUpload',
     data () {
       return {
-        action: 'http://localhost:3000/api/img/upload',
+        action: getBaseUrl() + '/img/upload',
         headers: {
           Authorization: 'Bearer ' + window.localStorage.getItem('token')
         },
