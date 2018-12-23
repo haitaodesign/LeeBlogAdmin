@@ -28,6 +28,7 @@
 <script>
 import addArticleDropdown from '../addArticleDropdown'
 import LeeUpload from '@com/LeeUpload/index.vue'
+import { getBaseUrl } from '@utils'
 import ArticleManager from '@api/ArticleManager'
 import UploadManager from '@api/UploadManager'
 const article = new ArticleManager()
@@ -47,7 +48,7 @@ export default {
       dropdownParams: {
       },
       config: {
-        action: 'http://localhost:3000/api/img/upload',
+        action: getBaseUrl() + '/img/upload',
         headers: {
           Authorization: 'Bearer ' + window.localStorage.getItem('token')
         }
