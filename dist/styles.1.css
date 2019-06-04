@@ -1,0 +1,53 @@
+
+.lee-header[data-v-2fc78a95] {
+  position: absolute;
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  border-bottom: 1px solid #eee;
+}
+.lee-header .lee-header-logo[data-v-2fc78a95] {
+  float: left;
+  width: 200px;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+}
+.lee-header .lee-header-nav[data-v-2fc78a95] {
+  float: right;
+  margin-right: 10px;
+}
+
+
+.lee-sidebar[data-v-4180973b] {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  bottom: 0;
+  width: 240px;
+  border-right: 1px solid #eee;
+}
+
+
+.lee-main[data-v-70c31e84] {
+  position: absolute;
+  padding: 10px;
+  top: 100px;
+  left: 240px;
+  bottom: 0;
+  right: 0;
+}
+
+
+
+.lee-bread[data-v-0004ae68] {
+  position: absolute;
+  top: 60px;
+  left: 240px;
+  right: 0;
+  height: 40px;
+  line-height: 40px;
+  padding-left: 10px;
+  border-bottom: 1px solid #eee;
+}
+

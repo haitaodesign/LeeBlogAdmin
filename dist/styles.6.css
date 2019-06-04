@@ -1,0 +1,31 @@
+
+.lee-login[data-v-992e81a2] {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background-image: url(resources/client/assets/images/login_bg.206d7a40.jpg);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+.lee-login .lee-login-box[data-v-992e81a2] {
+  position: absolute;
+  width: 500px;
+  height: 400px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255,255,255,0.6);
+}
+.lee-login .lee-login-box .lee-login-title[data-v-992e81a2] {
+  height: 100px;
+  line-height: 100px;
+  font-size: 32px;
+  background-color: #fff;
+  background-color: rgba(255,255,255,0.6);
+  text-align: center;
+  color: #000;
+}
+.lee-login .lee-login-box .lee-login-form[data-v-992e81a2] {
+  margin: 60px;
+}
+
