@@ -68,7 +68,7 @@
   },
   "dependencies": {
     "@aximario/json-tree": "^1.0.6",
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "babel-plugin-transform-runtime": "^6.23.0",
     "iview": "^3.1.0",
     "leeblog-iview-editor": "^1.0.0",
